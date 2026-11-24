@@ -26,11 +26,10 @@ Sistema-especialista-de-residuos-domesticos/
 ├── notebooks/
 │   └── EcoExpert_Colab.ipynb    # Notebook completo (código, testes unittest e validações)
 ├── docs/
-│   ├── registro_de_etica.pdf    # Diretrizes de Ética e Impactos da IA (UDF)
-│   └── relatorio_ecoexpert.pdf  # Relatório técnico acadêmico do protótipo
+│   ├── discussao_etica.pdf      # Síntese da discussão ética do projeto (1 página)
+│   └── registro_de_etica.pdf    # Diretrizes de Ética e Impactos da IA (UDF)
 ├── main.py                      # Motor de inferência, base de conhecimento e menu (CLI)
 ├── test_main.py                 # Suíte de testes automatizados (unittest)
-├── .gitignore                   # Arquivos ignorados pelo Git
 └── README.md                    # Documentação do projeto
 ```
 
@@ -97,6 +96,8 @@ python -m unittest -v
 ---
 
 ## ⚖️ Análise Ética e Limitações
+
+A síntese completa da discussão ética está disponível em [docs/discussao_etica.pdf](docs/discussao_etica.pdf).
 
 - **Privacidade e dados:** O sistema não coleta dados pessoais nem armazena histórico permanente em disco.
 - **Transparência:** Cada recomendação exibe explicitamente a **regra aplicada** (`R1`–`R5`) e informa que se trata de uma orientação automatizada por regras.
