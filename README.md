@@ -1,41 +1,57 @@
-# EcoExpert — Sistema Especialista de Resíduos Domésticos
+# ♻️ EcoExpert — Sistema Especialista de Resíduos Domésticos
 
-Protótipo acadêmico desenvolvido em **Python 3** para a disciplina **Inteligência Artificial e Linguagens Formais e Autômatos (LFA)** (UDF Centro Universitário — Profa. Kadidja Valéria).
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Nv777-Dev/Sistema-especialista-de-residuos-domesticos/blob/main/notebooks/EcoExpert_Colab.ipynb)
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python&logoColor=white)
+![Testes](https://img.shields.io/badge/unittest-6%20testes%20OK-brightgreen)
+![IA Simbólica](https://img.shields.io/badge/IA-Sistema%20Especialista-purple)
 
-O **EcoExpert** é um sistema especialista simbólico baseado em regras determinísticas que auxilia na classificação de resíduos domésticos (**Reciclável**, **Orgânico**, **Rejeito** ou **Descarte especial**) e apresenta a regra aplicada juntamente com a orientação de descarte.
+Protótipo acadêmico desenvolvido em **Python 3** para a disciplina **Inteligência Artificial e Linguagens Formais e Autômatos (LFA)** — **UDF Centro Universitário** (Profa. Kadidja Valéria).
+
+O **EcoExpert** é um sistema especialista simbólico baseado em regras determinísticas que orienta a separação de resíduos domésticos (**Reciclável**, **Orgânico**, **Rejeito** ou **Descarte especial**), exibindo a regra aplicada e a recomendação de descarte.
+
+---
+
+## 🚀 Executar no Google Colab
+
+Você pode executar o sistema, rodar os testes automatizados (`unittest`) e visualizar todas as validações diretamente no navegador clicando no botão abaixo:
+
+👉 **[Abrir Notebook no Google Colab](https://colab.research.google.com/github/Nv777-Dev/Sistema-especialista-de-residuos-domesticos/blob/main/notebooks/EcoExpert_Colab.ipynb)**
 
 ---
 
 ## 📁 Estrutura do Repositório
 
 ```text
-.
-├── main.py                      # Motor de inferência, base de conhecimento e máquina de estados do menu
-├── test_main.py                 # Testes automatizados (unittest)
-├── README.md                    # Documentação do projeto
+Sistema-especialista-de-residuos-domesticos/
+├── notebooks/
+│   └── EcoExpert_Colab.ipynb    # Notebook completo (código, testes unittest e validações)
+├── docs/
+│   ├── registro_de_etica.pdf    # Diretrizes de Ética e Impactos da IA (UDF)
+│   └── relatorio_ecoexpert.pdf  # Relatório técnico acadêmico do protótipo
+├── main.py                      # Motor de inferência, base de conhecimento e menu (CLI)
+├── test_main.py                 # Suíte de testes automatizados (unittest)
 ├── .gitignore                   # Arquivos ignorados pelo Git
-├── registro de etica.pdf.pdf    # Diretrizes de Ética e Impactos da IA (UDF)
-└── relatorio_ecoexpert.pdf      # Relatório técnico acadêmico do protótipo
+└── README.md                    # Documentação do projeto
 ```
 
 ---
 
 ## 🧠 Arquitetura e Regras de Produção
 
-O sistema não utiliza aprendizado de máquina; todo o conhecimento é explícito e auditável por meio de regras determinísticas:
+O sistema não utiliza aprendizado de máquina; todo o conhecimento é explícito, determinístico e auditável:
 
 | Componente | Implementação |
 | :--- | :--- |
-| **Base de conhecimento** | Dicionário `BASE` com **21 resíduos** distribuídos em 4 categorias (`especial`, `reciclavel`, `organico`, `rejeito`). |
-| **Normalização** | Função `normalizar()` remove acentos, converte para minúsculas e ajusta espaços extras. |
-| **Motor de inferência** | Função `inferir()` avalia a pertinência em ordem de prioridade e retorna `(categoria, orientacao, regra)`. |
-| **Memória de sessão** | Lista em memória que registra as consultas apenas durante a execução atual. |
+| **Base de conhecimento** | Dicionário `BASE` com **21 resíduos** cadastrados em 4 grupos (`especial`, `reciclavel`, `organico`, `rejeito`). |
+| **Normalização** | Função `normalizar()` remove acentos, converte letras para minúsculas e ajusta espaços extras. |
+| **Motor de inferência** | Função `inferir()` verifica pertinência por ordem de prioridade e retorna `(categoria, orientacao, regra)`. |
+| **Memória de sessão** | Lista mantida apenas em memória durante a execução atual para consulta do histórico. |
 
 ### Regras de Produção (`R1` a `R5`)
 
 | Regra | Condição e Conclusão |
-| :--- | :--- |
-| **R1** | **SE** pertence à lista `especial`, **ENTÃO** indicar **Descarte especial** (prioridade máxima). |
+| :---: | :--- |
+| **R1** | **SE** pertence à lista `especial`, **ENTÃO** indicar **Descarte especial** *(prioridade máxima)*. |
 | **R2** | **SE** pertence à lista `reciclavel`, **ENTÃO** classificar como **Reciclável**. |
 | **R3** | **SE** pertence à lista `organico`, **ENTÃO** classificar como **Orgânico**. |
 | **R4** | **SE** pertence à lista `rejeito`, **ENTÃO** classificar como **Rejeito**. |
@@ -45,7 +61,7 @@ O sistema não utiliza aprendizado de máquina; todo o conhecimento é explícit
 
 ## 🔄 Máquina de Estados do Menu
 
-O fluxo de navegação é controlado por uma máquina de estados finita com conjunto de estados $Q = \{\text{MENU}, \text{CLASSIFICAR}, \text{HISTORICO}, \text{FIM}\}$:
+O controle de navegação é modelado por uma máquina de estados finita com conjunto de estados $Q = \{\text{MENU}, \text{CLASSIFICAR}, \text{HISTORICO}, \text{FIM}\}$:
 
 ```mermaid
 stateDiagram-v2
@@ -61,12 +77,12 @@ stateDiagram-v2
 
 ---
 
-## ▶️ Como Executar e Testar
+## 💻 Como Executar e Testar Localmente
 
 ### Pré-requisitos
 - **Python 3.9+** instalado (sem dependências externas).
 
-### Executar o sistema interativo
+### Executar o menu interativo
 ```bash
 python main.py
 ```
@@ -82,13 +98,13 @@ python -m unittest -v
 
 ## ⚖️ Análise Ética e Limitações
 
-- **Privacidade e dados:** O sistema não coleta dados pessoais nem persiste informações em disco; o histórico existe apenas na memória da sessão.
-- **Transparência:** Cada saída informa explicitamente a **regra aplicada** (`R1`–`R5`) e exibe um aviso de que se trata de recomendação automatizada por regras.
-- **Supervisão e limitações:** O sistema reconhece apenas os termos exatos cadastrados (após normalização), não analisa imagens ou contaminação física dos materiais e depende da disponibilidade de coleta seletiva ou pontos de logística reversa do município do usuário. A revisão das regras cabe aos autores do projeto.
+- **Privacidade e dados:** O sistema não coleta dados pessoais nem armazena histórico permanente em disco.
+- **Transparência:** Cada recomendação exibe explicitamente a **regra aplicada** (`R1`–`R5`) e informa que se trata de uma orientação automatizada por regras.
+- **Supervisão e limitações:** Reconhece apenas os termos exatos cadastrados (após normalização), não analisa imagens ou contaminação física e depende das normas de coleta seletiva do município do usuário. A revisão das regras cabe aos responsáveis pelo projeto.
 
 ### Declaração de Uso de IA
-- **IA incorporada ao projeto:** O sistema utiliza um **sistema especialista baseado em regras explícitas** (IA simbólica), sem modelos estatísticos ou generativos em tempo de execução.
-- **IA utilizada na elaboração:** Ferramentas de IA generativa foram utilizadas como apoio na estruturação inicial do código, testes automatizados e documentação técnica, sendo todo o conteúdo revisado, testado e validado pelos integrantes do grupo.
+- **IA incorporada ao projeto:** Sistema especialista baseado em regras explícitas (IA simbólica), sem uso de modelos estatísticos ou generativos em tempo de execução.
+- **IA utilizada na elaboração:** Ferramentas de IA generativa auxiliaram na estruturação inicial do código, criação dos testes automatizados, notebook Colab e documentação, com revisão e validação integral pelos integrantes do projeto.
 
 ---
 
