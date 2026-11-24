@@ -13,7 +13,6 @@ O **EcoExpert** é um sistema especialista simbólico baseado em regras determin
 ├── main.py                      # Motor de inferência, base de conhecimento e máquina de estados do menu
 ├── test_main.py                 # Testes automatizados (unittest)
 ├── README.md                    # Documentação do projeto
-├── .gitignore                   # Arquivos ignorados pelo Git
 ├── registro de etica.pdf.pdf    # Diretrizes de Ética e Impactos da IA (UDF)
 └── relatorio_ecoexpert.pdf      # Relatório técnico acadêmico do protótipo
 ```
